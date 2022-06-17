@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import { Provider } from "react-redux"
 import { store } from './app/store';
+import "./fonts/BebasNeue-Regular.ttf"
+import "./fonts/InriaSans-Regular.ttf"
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

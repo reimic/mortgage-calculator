@@ -18,7 +18,7 @@ export default function ScenarioCard({ name, id }: ScenarioCardTypes) {
   }
 
   return (
-    <div>
+    <div className='shadow-basic my-2 p-2 bg-green border-2 border-black rounded-md font-bebas tracking-wide text-xl'>
         <div onClick={handleActivateScenario} className="reservation-card-container">{name}</div>
     </div>
   )
