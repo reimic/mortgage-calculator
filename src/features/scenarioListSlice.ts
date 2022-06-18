@@ -1,26 +1,37 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-interface ScenarioListState {
-    name: string[]
+interface Display {
+    active: boolean,
+    activeOrder: number,
+    list: boolean,
+    listOrder: number,
 }
 
-const initialState: ScenarioListState = {
-    name: []
+interface Scenario {
+    name: string,
+    id: string,
+    display: Display,
+    items?: number[],
 }
 
-export const scenarioListSlice = createSlice({
-    name: "scenarios",
+interface ScenariosListState {
+    list: Scenario[]
+}
+
+const initialState: ScenariosListState = {
+    list: []
+}
+
+export const scenariosListSlice = createSlice({
+    name: "scenariosList",
     initialState,
     reducers: {
-        addScenarioToList: (state, action: PayloadAction<string>) => {
-            state.name.push(action.payload)
-        },
-        removeScenarioFromList: (state, action: PayloadAction<number>) => {
-            state.name.splice(action.payload, 1)
+        addScenarioToList: (state, action: PayloadAction<Scenario>) => {
+            state.list.push(action.payload)
         }
     }
 })
 
-export const { addScenarioToList, removeScenarioFromList } = scenarioListSlice.actions
+export const { addScenarioToList } = scenariosListSlice.actions
 
-export default scenarioListSlice.reducer
+export default scenariosListSlice.reducer

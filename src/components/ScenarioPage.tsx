@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import {addItemToItems, changeScenarioName} from "../features/scenarioActiveSlice"
+import {addItemToScenario, changeScenarioName} from "../features/scenarioActiveSlice"
 
 interface ScenarioPageTypes {
     name: string,
-    id: number,
+    id: string,
     items?: number[]
 }
 
@@ -14,7 +14,7 @@ export default function ScenarioPage({ name, id, items }: ScenarioPageTypes) {
         dispatch(changeScenarioName({id, newName: "Tom"}))
     }
     const handleAddItem = () => {
-        dispatch(addItemToItems({id, item: 10}))
+        dispatch(addItemToScenario({id, item: 10}))
     }
 
   return (

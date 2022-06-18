@@ -12,7 +12,6 @@ function MortgageCalculator(){
     return (
         <>
         <p>This is for calculating mortgages.</p>
-        {/* onSubmit={setData(prevData => prevData)} */}
         <form >
             <label>
                 property-price

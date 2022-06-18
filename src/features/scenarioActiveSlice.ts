@@ -2,8 +2,8 @@ import { createSlice, PayloadAction} from "@reduxjs/toolkit"
 
 interface Scenario {
     name: string,
-    id: number,
-    items?: number[]
+    id: string,
+    items?: number[],
 }
 
 interface ScenariosActiveState {
@@ -21,23 +21,26 @@ export const scenariosActiveSlice = createSlice({
         addScenarioToActive(state, action: PayloadAction<Scenario>){
             state.scenarios.push(action.payload)
         },
-        addItemToItems(state, action: PayloadAction<{id: number, item: number}>){
+        addItemToScenario(state, action: PayloadAction<{id: string, item: number}>){
             const {id, item} = action.payload
-            if(state.scenarios[id]){
-                if(state.scenarios[id].items){
-                    state.scenarios[id].items?.push(item)
+            const prevState = state.scenarios.find(scenario => scenario.id === id)
+            if(prevState){
+                if(prevState.items){
+                    prevState.items?.push(item)
                 } else {
-                    state.scenarios[id].items = []
-                    state.scenarios[id].items?.push(item)
+                    prevState.items = []
+                    prevState.items?.push(item)
                 }
             }
         },
-        changeScenarioName(state, action: PayloadAction<{id: number, newName: string}>){
-            if(state.scenarios[action.payload.id]){
-                state.scenarios[action.payload.id].name = action.payload.newName
+        changeScenarioName(state, action: PayloadAction<{id: string, newName: string}>){
+            const {id, newName} = action.payload
+            const prevState = state.scenarios.find(scenario => scenario.id === id)
+            if(prevState){
+                prevState.name = newName
             }
         }
-        }
+    }
 })
-export const { addScenarioToActive, changeScenarioName, addItemToItems } = scenariosActiveSlice.actions
+export const { addScenarioToActive, changeScenarioName, addItemToScenario } = scenariosActiveSlice.actions
 export default scenariosActiveSlice.reducer

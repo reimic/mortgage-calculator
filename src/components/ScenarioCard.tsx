@@ -1,16 +1,15 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { removeScenarioFromList } from '../features/scenarioListSlice'
 import { addScenarioToActive } from "../features/scenarioActiveSlice"
 
 
 
 interface ScenarioCardTypes {
     name: string,
-    id: number,
+    id: string,
 }
 
-export default function ScenarioCard({ name, id }: ScenarioCardTypes) {
+export default function ScenarioCard({name, id}: ScenarioCardTypes) {
   const dispatch = useDispatch()
 
   const handleActivateScenario = () => {
