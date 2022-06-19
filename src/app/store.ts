@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit"
-import scenariosListReducer from "../features/scenarioListSlice"
+import externalDataReducer from "../features/externalDataSlice"
 import scenariosReducer from "../features/scenarioActiveSlice"
 import scenariosDataBaseReducer  from "../features/scenarioDataBaseSlice"
 
 export const store = configureStore({
     reducer: {
-        scenariosList: scenariosListReducer,
+        externalData: externalDataReducer,
         scenariosActive: scenariosReducer,
         scenariosDataBase: scenariosDataBaseReducer,
 
